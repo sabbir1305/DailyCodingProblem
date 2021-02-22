@@ -18,10 +18,52 @@ namespace UnitTestProject
 
             var data = new List<int> {1,2,3,4,5 };
             var actualResult = new List<int> {120,60,40,30,24 };
+      
             var result = arrayRepo.ProductOfOtherArray(data);
             var flag =   Enumerable.SequenceEqual(actualResult, result);
 
             Assert.IsTrue(flag,"Result Validated");
+        }
+        [TestMethod]
+        public void IsProductOfAllIndexValidWithoutDevide()
+        {
+            var arrayRepo = new ArrayRepo();
+
+            var data = new List<int> { 1, 2, 3, 4, 5 };
+            var actualResult = new List<int> { 120, 60, 40, 30, 24 };
+
+            var result = arrayRepo.GetProductOfArrayWithoutDiv(data);
+            var flag = Enumerable.SequenceEqual(actualResult, result);
+
+            Assert.IsTrue(flag, "Result Validated");
+        }
+
+        [TestMethod]
+        public void IsSmallWindowCorrectBySortedWay()
+        {
+            var arrayRepo = new ArrayRepo();
+            var data = new int[]{ 3, 7, 5, 6, 9 };
+            var result = arrayRepo.LocateSmallestWindowBySorted(data);
+            var checkLeft = result.left == 1 ? true : false;
+            var checkRight = result.right == 3 ? true : false;
+
+            Assert.IsTrue(checkLeft, "Left Failed");
+            Assert.IsTrue(checkRight, "Right Failed");
+
+        }
+
+        [TestMethod]
+        public void IsWindowCorrect()
+        {
+            var arrayRepo = new ArrayRepo();
+            var data = new int[] { 3, 7, 5, 6, 9 };
+            var result = arrayRepo.Window(data);
+            var checkLeft = result.left == 1 ? true : false;
+            var checkRight = result.right == 3 ? true : false;
+
+            Assert.IsTrue(checkLeft, "Left Failed");
+            Assert.IsTrue(checkRight, "Right Failed");
+
         }
     }
 }
