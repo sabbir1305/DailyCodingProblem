@@ -120,5 +120,36 @@ namespace DailyCodingProblem.Arrays
         {
             return v1 < v2 ? v1 : v2;
         }
+  
+    
+        public int MaxSubarraySum(int[] data)
+        {
+            int maxEndingHere= 0,maxSoFar = 0;
+
+            foreach (var i in data)
+            {
+                maxEndingHere = Max(i, maxEndingHere + i);
+                maxSoFar = Max(maxSoFar, maxEndingHere);
+            }
+
+            return maxSoFar;
+        }
+
+        public int MinSubArraySum(int[] data)
+        {
+            int minEndingHere = 0, minSoFar = 0;
+            foreach (var item in data)
+            {
+                minEndingHere = Min(item, minEndingHere + item);
+                minSoFar = Min(minSoFar, minEndingHere);
+            }
+            return minSoFar;
+        }
+
+        public int MaximumCircularSubArray(int[] data)
+        {
+            var MaxSubArraySumWrapAround = data.Sum() - MinSubArraySum(data);
+            return Max(MaxSubarraySum(data), MaxSubArraySumWrapAround);
+        }
     }
 }

@@ -65,5 +65,23 @@ namespace UnitTestProject
             Assert.IsTrue(checkRight, "Right Failed");
 
         }
+
+        [TestMethod]
+        public void CheckMaxSubArraySum()
+        {
+            var arrayRepo = new ArrayRepo();
+          //  var arr = new int[] { 34, -50, 42, 14, -5, 86 };
+            var arr = new int[] { -2, -3, 4, -1, -2, 1, 5, -3 };
+
+            var maxSum = arrayRepo.MaxSubarraySum(arr)==7?true:false;
+            var minSubSum = arrayRepo.MinSubArraySum(arr)==-5?true:false;
+            var wrapArounMax = arrayRepo.MaximumCircularSubArray(arr)==7?true:false;
+
+            Assert.IsTrue(maxSum, "Finding Max Sub Array Sum Failed");
+            Assert.IsTrue(minSubSum, "Finding Min Sub Array Sum Failed");
+            Assert.IsTrue(wrapArounMax, "Finding Wrap around Sub Array Sum Failed");
+            
+
+        }
     }
 }
