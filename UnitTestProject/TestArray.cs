@@ -83,5 +83,17 @@ namespace UnitTestProject
             
 
         }
+
+        [TestMethod]
+        public void CheckSmallerElemntsToRight()
+        {
+            var arrayRepo = new ArrayRepo();
+              var arr = new int[] { 3, 4, 9, 6, 1 };
+            var desiredResult = new List<int> { 1,1,2,1,0};
+
+            var result = arrayRepo.FindNumberOfSmallElementsToTheRght(arr);
+            var matchResult = result.SequenceEqual(desiredResult);
+            Assert.IsTrue(matchResult, "Failed Desired Result is not what was expected");
+        }
     }
 }

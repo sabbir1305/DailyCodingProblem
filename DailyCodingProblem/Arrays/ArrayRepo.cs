@@ -151,5 +151,27 @@ namespace DailyCodingProblem.Arrays
             var MaxSubArraySumWrapAround = data.Sum() - MinSubArraySum(data);
             return Max(MaxSubarraySum(data), MaxSubArraySumWrapAround);
         }
+
+        public List<int> FindNumberOfSmallElementsToTheRght(int[] data)
+        {
+            var result = new List<int>();
+            var seen = new SortedList<int,int>();
+            int count = 0;
+            foreach (var item in data.Reverse())
+            {
+                seen.Add(item,item);
+                count = 0;
+                foreach (var s in seen)
+                {
+                    if (s.Key < item)
+                        count++;
+                    else
+                        break;
+                }
+                result.Add(count);
+            }
+            result.Reverse();
+            return result;
+        }
     }
 }

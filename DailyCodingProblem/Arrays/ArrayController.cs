@@ -15,6 +15,9 @@ namespace DailyCodingProblem.Arrays
             var result =  repo.GetProductOfArrayWithoutDiv(data);
             var arr = new int[] {34,-50,42,14,-5,86 };
             var result2 =  repo.MaximumCircularSubArray(arr);
+            var arr2 = new int[] { 3, 4, 9, 6, 1 };
+            var res = repo.FindNumberOfSmallElementsToTheRght(arr2);
+
             return View();
         }
     }
