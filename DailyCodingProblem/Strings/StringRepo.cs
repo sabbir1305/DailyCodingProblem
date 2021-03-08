@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DailyCodingProblem.Strings
@@ -45,6 +46,60 @@ namespace DailyCodingProblem.Strings
                 return IsPallindrome(str, start + 1,end - 1);
             return true;
         }
+
+
+        #region Print Zigzag form
+        //Given a string and a number of lines k , make zigzag
+        //line=5 => 7,5,3,1
+        public int GetSpaces(int row,bool desc,int k)
+        {
+            var max_spaces = (k - 1) * 2 - 1;
+            int spaces = 0;
+            if (desc)
+            {
+                spaces = max_spaces - row * 2;
+                return spaces;
+            }
+            spaces = max_spaces - (k - 1 - row) * 2;
+            return spaces;
+        }
+
+        public bool IsDescending(int index,int k)
+        {
+            //check whether the index is more or less than halfway
+            return index % (2 * (k - 1)) < k - 1;
+        }
+
+        public string ZigZag(string sentence,int k)
+        {
+            StringBuilder builder = new StringBuilder();
+            int n = sentence.Length;
+            int i;
+          
+       
+            string spaces = "".PadLeft(n, ' ');
+            for (int row = 0; row < k; row++)
+            {
+               var builder2 = new StringBuilder();
+                i = row;
+                builder2.Append(spaces);
+
+                while (i<n)
+                {
+                    builder2[i] = sentence[i];
+                    bool desc = IsDescending(i, k);
+                    int numberOfSpace = GetSpaces(row, desc, k);
+                    i += numberOfSpace + 1;
+
+                }
+                builder.Append(builder2.ToString());
+                builder.Append('\n');
+            }
+
+            return builder.ToString();
+        }
+
+        #endregion
     }
 
 }

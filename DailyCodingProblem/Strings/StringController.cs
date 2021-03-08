@@ -15,6 +15,10 @@ namespace DailyCodingProblem.Strings
             string[] words = { "code", "edoc", "da", "d" };
   
             var returendResulty = Repo.GeneratePalindromePairs(words);
+
+            var ZigZag = Repo.ZigZag("thisisazigzag", 4);
+            var ZigZag2 = Repo.ZigZag("thisisazigzag", 5);
+
             return View();
         }
     }
